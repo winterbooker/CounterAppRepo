@@ -8,36 +8,45 @@ class CounterList extends React.Component {
         <View style={styles.counterItem}>
           <Text style={styles.counterTitle}>カウントしたいもの</Text>
           <View style={styles.counterNumber}>
-            <Text style={styles.decrease}>-</Text>
-            <Text style={styles.count}>23</Text>
-            <Text style={styles.increase}>+</Text>
+            <View style={styles.decreaseButton}>
+              <Text style={styles.decrease}>-</Text>
+            </View>
+            <View style={styles.countButton}>
+              <Text style={styles.count}>23</Text>
+            </View>
+            <View style={styles.increaseButton}>
+              <Text style={styles.increase}>+</Text>
+            </View>
           </View>
         </View>
 
         <View style={styles.counterItem}>
           <Text style={styles.counterTitle}>カウントしたいもの</Text>
           <View style={styles.counterNumber}>
-            <Text style={styles.decrease}>-</Text>
-            <Text style={styles.count}>23</Text>
-            <Text style={styles.increase}>+</Text>
+            <View style={styles.decreaseButton}>
+              <Text style={styles.decrease}>-</Text>
+            </View>
+            <View style={styles.countButton}>
+              <Text style={styles.count}>23</Text>
+            </View>
+            <View style={styles.increaseButton}>
+              <Text style={styles.increase}>+</Text>
+            </View>
           </View>
         </View>
 
         <View style={styles.counterItem}>
           <Text style={styles.counterTitle}>カウントしたいもの</Text>
           <View style={styles.counterNumber}>
-            <Text style={styles.decrease}>-</Text>
-            <Text style={styles.count}>23</Text>
-            <Text style={styles.increase}>+</Text>
-          </View>
-        </View>
-
-        <View style={styles.counterItem}>
-          <Text style={styles.counterTitle}>カウントしたいもの</Text>
-          <View style={styles.counterNumber}>
-            <Text style={styles.decrease}>-</Text>
-            <Text style={styles.count}>23</Text>
-            <Text style={styles.increase}>+</Text>
+            <View style={styles.decreaseButton}>
+              <Text style={styles.decrease}>-</Text>
+            </View>
+            <View style={styles.countButton}>
+              <Text style={styles.count}>23</Text>
+            </View>
+            <View style={styles.increaseButton}>
+              <Text style={styles.increase}>+</Text>
+            </View>
           </View>
         </View>
       </View>
@@ -59,31 +68,56 @@ const styles = StyleSheet.create({
     paddingBottom: 25,
   },
   counterTitle: {
-    fontSize: 18,
+    fontSize: 20,
     marginBottom: 5,
     paddingTop: 10,
+    paddingBottom: 10,
   },
   counterNumber: {
     fontSize: 20,
-    backgroundColor: '#0C7489',
-    padding: 15,
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
+    marginBottom: 10,
+  },
+  countButton: {
+    backgroundColor: '#FBBA72',
+    height: 40,
+    width: 150,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   count: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight: 'bold',
     paddingLeft: 20,
     paddingRight: 20,
   },
+  increaseButton: {
+    backgroundColor: '#FBBA72',
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   increase: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  decreaseButton: {
+    backgroundColor: '#FBBA72',
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   decrease: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 22,
+    fontWeight: 'bold',
   },
 });
 
