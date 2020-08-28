@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 
 class CounterDetailScreen extends React.Component {
   render() {
@@ -10,9 +10,9 @@ class CounterDetailScreen extends React.Component {
           <Text style={styles.counterHeaderDate}>start: 20/8/27</Text>
         </View>
 
-        <View style={styles.counterDelete}>
-          <Text style={styles.counterDeleteText}>削除</Text>
-        </View>
+        <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('Home'); }} underlayColor="#D11026">
+          <Text style={styles.buttonTitle}>削除する</Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginRight: 50,
     marginLeft: 50,
+    marginBottom: 50,
     borderRadius: 25,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
@@ -59,6 +60,19 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  button: {
+    backgroundColor: '#EF233C',
+    height: 48,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '70%',
+    alignSelf: 'center',
+  },
+  buttonTitle: {
+    color: '#fff',
+    fontSize: 18,
   },
 });
 

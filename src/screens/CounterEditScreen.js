@@ -1,7 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput } from 'react-native';
-
-import CircleButton from '../elements/CircleButton';
+import { StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-native';
 
 class CounterEditScreen extends React.Component {
   render() {
@@ -11,7 +9,9 @@ class CounterEditScreen extends React.Component {
         <View style={styles.counterEditInput}>
           <TextInput style={styles.counterEditInputText} />
         </View>
-        <CircleButton />
+        <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('Home'); }} underlayColor="#0096e0">
+          <Text style={styles.buttonTitle}>作成する</Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     width: 300,
     backgroundColor: '#FCD0A1',
     marginTop: 20,
+    marginBottom: 50,
     padding: 20,
     borderRadius: 25,
     shadowColor: '#000',
@@ -43,6 +44,19 @@ const styles = StyleSheet.create({
   counterEditInputText: {
     fontSize: 22,
     fontWeight: 'bold',
+  },
+  button: {
+    backgroundColor: '#00A6FB',
+    height: 48,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '70%',
+    alignSelf: 'center',
+  },
+  buttonTitle: {
+    color: '#fff',
+    fontSize: 18,
   },
 });
 

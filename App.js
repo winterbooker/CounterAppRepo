@@ -8,14 +8,16 @@ import LoginScreen from './src/screens/LoginScreen';
 import SignupScreen from './src/screens/SignupScreen';
 
 const App = createStackNavigator({
+  Login:         { screen: LoginScreen },
+  Signup:        { screen: SignupScreen },
   Home:          { screen: CounterListScreen },
   CounterEdit:   { screen: CounterEditScreen },
-  Signup:        { screen: SignupScreen },
-  Login:         { screen: LoginScreen },
   CounterDetail: { screen: CounterDetailScreen },
 }, {
   defaultNavigationOptions: {
     headerTitle: 'Counter',
+    headerTintColor: '#fff',
+    headerBackTitle: null,
     headerStyle: {
       backgroundColor: '#034078',
     },
