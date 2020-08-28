@@ -8,8 +8,8 @@ class CounterListScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <CounterList />
-        <CircleButton>+</CircleButton>
+        <CounterList navigation={this.props.navigation} />
+        <CircleButton navigation={this.props.navigation}>+</CircleButton>
       </View>
     );
   }

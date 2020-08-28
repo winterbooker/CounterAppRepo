@@ -1,23 +1,29 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 
 class CircleButton extends React.Component {
   render() {
     return (
-      <View style={styles.circleButton}>
-        <Text style={styles.circleButtonTitle}>
-          {this.props.children}
-        </Text>
-      </View>
+      <TouchableHighlight style={styles.container} onPress={() => { this.props.navigation.navigate('CounterEdit'); }} underlayColor="transparent">
+        <View style={styles.circleButton}>
+          <Text style={styles.circleButtonTitle}>
+            {this.props.children}
+          </Text>
+        </View>
+      </TouchableHighlight>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  circleButton: {
+  container: {
     position: 'absolute',
     bottom: 50,
     right: 40,
+    width: 48,
+    height: 48,
+  },
+  circleButton: {
     width: 60,
     height: 60,
     backgroundColor: '#EF233C',

@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 
+import CircleButton from '../elements/CircleButton';
+
 class CounterEditScreen extends React.Component {
   render() {
     return (
@@ -9,6 +11,7 @@ class CounterEditScreen extends React.Component {
         <View style={styles.counterEditInput}>
           <TextInput style={styles.counterEditInputText} />
         </View>
+        <CircleButton />
       </View>
     );
   }
