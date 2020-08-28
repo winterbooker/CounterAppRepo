@@ -1,13 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import Appbar from '../components/Appbar';
-
 class CounterDetailScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Appbar />
         <View style={styles.counterHeader}>
           <Text style={styles.counterHeaderTitle}>カウントしたいもの</Text>
           <Text style={styles.counterHeaderDate}>start: 20/8/27</Text>
@@ -28,13 +25,17 @@ const styles = StyleSheet.create({
   },
   counterHeader: {
     height: 150,
-    backgroundColor: '#CAD8DE',
+    backgroundColor: '#FCD0A1',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 150,
     marginRight: 50,
     marginLeft: 50,
     borderRadius: 25,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
   },
   counterHeaderTitle: {
     fontSize: 22,
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
 
   },
   counterDelete: {
-    backgroundColor: '#F24236',
+    backgroundColor: '#EF233C',
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',
