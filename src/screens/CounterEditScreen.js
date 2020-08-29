@@ -1,15 +1,39 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-native';
+import firebase from 'firebase';
 
 class CounterEditScreen extends React.Component {
+  state = {
+    body: '',
+  }
+
+  handlePress() {
+    const { params } = this.props.navigation.state;
+    const db = firebase.firestore();
+    db.collection(`users/${params.currentUser.uid}/counters`).add({
+      body: this.state.body,
+      createdOn: new Date(),
+    })
+      .then((docRef) => {
+        console.log(docRef.id);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.counterHeaderDate}>start: 20/8/27</Text>
         <View style={styles.counterEditInput}>
-          <TextInput style={styles.counterEditInputText} />
+          <TextInput
+            style={styles.counterEditInputText}
+            value={this.state.body}
+            onChangeText={(text) => { this.setState({ body: text }); }}
+          />
         </View>
-        <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('Home'); }} underlayColor="#0096e0">
+        <TouchableHighlight style={styles.button} onPress={this.handlePress.bind(this)} underlayColor="#0096e0">
           <Text style={styles.buttonTitle}>作成する</Text>
         </TouchableHighlight>
       </View>

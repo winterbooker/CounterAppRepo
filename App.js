@@ -10,6 +10,9 @@ import SignupScreen from './src/screens/SignupScreen';
 
 import ENV from './env.json';
 
+// eslint-disable-next-line
+require("firebase/firestore");
+
 const firebaseConfig = {
   apiKey:            ENV.FIREBASE_API_KEY,
   authDomain:        ENV.FIREBASE_AUTH_DOMAIN,
@@ -17,8 +20,9 @@ const firebaseConfig = {
   projectId:         ENV.FIREBASE_PRJ_ID,
   storageBucket:     ENV.FIREBASE_STORAGE,
   messagingSenderId: ENV.FIREBASE_SENDER_ID,
+  appID:             ENV.FIREBASE_APP_ID,
 };
-firebase.initializeApp(firebaseConfig)
+firebase.initializeApp(firebaseConfig);
 
 const App = createStackNavigator({
   Login:         { screen: LoginScreen },

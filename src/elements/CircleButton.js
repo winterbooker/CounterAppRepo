@@ -3,8 +3,10 @@ import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 
 class CircleButton extends React.Component {
   render() {
+    const { onPress } = this.props;
+
     return (
-      <TouchableHighlight style={styles.container} onPress={() => { this.props.navigation.navigate('CounterEdit'); }} underlayColor="transparent">
+      <TouchableHighlight style={styles.container} onPress={onPress} underlayColor="transparent">
         <View style={styles.circleButton}>
           <Text style={styles.circleButtonTitle}>
             {this.props.children}
