@@ -1,61 +1,32 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, FlatList } from 'react-native';
 
 class CounterList extends React.Component {
+  renderCounter({ item }) {
+    return (
+      <TouchableHighlight onPress={() => { this.props.navigation.navigate('CounterDetail'); }}>
+        <View style={styles.counterItem}>
+          <Text style={styles.counterTitle}>{item.body}</Text>
+          <View style={styles.counterNumber}>
+            <View style={styles.decreaseButton}>
+              <Text style={styles.decrease}>-</Text>
+            </View>
+            <View style={styles.countButton}>
+              <Text style={styles.count}>23</Text>
+            </View>
+            <View style={styles.increaseButton}>
+              <Text style={styles.increase}>+</Text>
+            </View>
+          </View>
+        </View>
+      </TouchableHighlight>
+    );
+  }
+
   render() {
     return (
       <View style={styles.counterList}>
-        <TouchableHighlight onPress={() => { this.props.navigation.navigate('CounterDetail'); }}>
-          <View style={styles.counterItem}>
-            <Text style={styles.counterTitle}>カウントしたいもの</Text>
-            <View style={styles.counterNumber}>
-              <View style={styles.decreaseButton}>
-                <Text style={styles.decrease}>-</Text>
-              </View>
-              <View style={styles.countButton}>
-                <Text style={styles.count}>23</Text>
-              </View>
-              <View style={styles.increaseButton}>
-                <Text style={styles.increase}>+</Text>
-              </View>
-            </View>
-          </View>
-        </TouchableHighlight>
-
-        <TouchableHighlight onPress={() => { this.props.navigation.navigate('CounterDetail'); }}>
-          <View style={styles.counterItem}>
-            <Text style={styles.counterTitle}>カウントしたいもの</Text>
-            <View style={styles.counterNumber}>
-              <View style={styles.decreaseButton}>
-                <Text style={styles.decrease}>-</Text>
-              </View>
-              <View style={styles.countButton}>
-                <Text style={styles.count}>23</Text>
-              </View>
-              <View style={styles.increaseButton}>
-                <Text style={styles.increase}>+</Text>
-              </View>
-            </View>
-          </View>
-        </TouchableHighlight>
-
-        <TouchableHighlight onPress={() => { this.props.navigation.navigate('CounterDetail'); }}>
-          <View style={styles.counterItem}>
-            <Text style={styles.counterTitle}>カウントしたいもの</Text>
-            <View style={styles.counterNumber}>
-              <View style={styles.decreaseButton}>
-                <Text style={styles.decrease}>-</Text>
-              </View>
-              <View style={styles.countButton}>
-                <Text style={styles.count}>23</Text>
-              </View>
-              <View style={styles.increaseButton}>
-                <Text style={styles.increase}>+</Text>
-              </View>
-            </View>
-          </View>
-        </TouchableHighlight>
-
+        <FlatList data={this.props.counterList} renderItem={this.renderCounter.bind(this)} />
       </View>
     );
   }

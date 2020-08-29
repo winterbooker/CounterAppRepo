@@ -8,9 +8,9 @@ class CounterEditScreen extends React.Component {
   }
 
   handlePress() {
-    const { params } = this.props.navigation.state;
     const db = firebase.firestore();
-    db.collection(`users/${params.currentUser.uid}/counters`).add({
+    const { currentUser } = firebase.auth();
+    db.collection(`users/${currentUser.uid}/counters`).add({
       body: this.state.body,
       createdOn: new Date(),
     })

@@ -5,14 +5,14 @@ import firebase from 'firebase';
 class LoginScreen extends React.Component {
   state = {
     email: 'test1@example.com',
-    password: '',
+    password: 'password',
   }
 
   // eslint-disable-next-line
   handleSubmit() {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then((result) => {
-        this.props.navigation.navigate('Home', { currentUser: result.user });
+        this.props.navigation.navigate('Home');
       })
       .catch(() => {
 
