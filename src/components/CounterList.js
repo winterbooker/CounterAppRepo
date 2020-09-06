@@ -2,21 +2,44 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableHighlight, FlatList } from 'react-native';
 
 class CounterList extends React.Component {
+  state = {
+    count: 0,
+  }
+
+  handlePlusButton() {
+    this.setState(prevState => ({ count: prevState.count + 1 }));
+  }
+
+  handleMinusButton() {
+    const { count } = this.state;
+    if (count > 0) {
+      this.setState(prevState => ({ count: prevState.count - 1 }));
+    }
+  }
+
   renderCounter({ item }) {
     return (
-      <TouchableHighlight onPress={() => { this.props.navigation.navigate('CounterDetail'); }}>
+      <TouchableHighlight onPress={() => { this.props.navigation.navigate('CounterDetail', { counter: item }); }}>
         <View style={styles.counterItem}>
-          <Text style={styles.counterTitle}>{item.body}</Text>
+          <Text style={styles.counterTitle}>{item.body.substring(0, 10)}</Text>
           <View style={styles.counterNumber}>
-            <View style={styles.decreaseButton}>
+            <TouchableHighlight
+              style={styles.decreaseButton}
+              onPress={this.handleMinusButton.bind(this)}
+            >
               <Text style={styles.decrease}>-</Text>
-            </View>
+            </TouchableHighlight>
             <View style={styles.countButton}>
-              <Text style={styles.count}>23</Text>
+              <Text style={styles.count}>
+                { this.state.count }
+              </Text>
             </View>
-            <View style={styles.increaseButton}>
+            <TouchableHighlight
+              style={styles.increaseButton}
+              onPress={this.handlePlusButton.bind(this)}
+            >
               <Text style={styles.increase}>+</Text>
-            </View>
+            </TouchableHighlight>
           </View>
         </View>
       </TouchableHighlight>

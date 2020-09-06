@@ -15,19 +15,15 @@ class CounterListScreen extends React.Component {
     const { currentUser } = firebase.auth();
     const db = firebase.firestore();
     db.collection(`users/${currentUser.uid}/counters`)
-      .get()
-      .then((snapshot) => {
+      .onSnapshot((snapshot) => {
         const counterList = [];
         snapshot.forEach((doc) => {
-          console.log(doc);
           counterList.push({ ...doc.data(), key: doc.id });
         });
         this.setState({ counterList });
-      })
-      .catch((error) => {
-        console.log(error);
       });
   }
+
 
   handlePress() {
     this.props.navigation.navigate('CounterEdit');

@@ -1,13 +1,29 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 
+const dateString = (date) => {
+  if (date == null) { return ''; }
+  const dateObject = date.toDate();
+  return dateObject.toISOString().split('T')[0];
+};
+
 class CounterDetailScreen extends React.Component {
+  state = {
+    counter: {},
+  }
+
+  UNSAFE_componentWillMount() {
+    const { params } = this.props.navigation.state;
+    this.setState({ counter: params.counter });
+  }
+
   render() {
+    const { counter } = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.counterHeader}>
-          <Text style={styles.counterHeaderTitle}>カウントしたいもの</Text>
-          <Text style={styles.counterHeaderDate}>start: 20/8/27</Text>
+          <Text style={styles.counterHeaderTitle}>{counter.body.substring(0, 10)}</Text>
+          <Text style={styles.counterHeaderDate}>{dateString(counter.createdOn)}</Text>
         </View>
 
         <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('Home'); }} underlayColor="#D11026">
